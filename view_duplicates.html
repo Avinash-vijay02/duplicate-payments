@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duplicate Payments</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Duplicate Payments</h1>
+    <table id="duplicateTable">
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+      let duplicates = JSON.parse(localStorage.getItem("duplicatePayments"));
+
+      if (duplicates && duplicates.length > 0) {
+        let tableHead = document.getElementById("tableHead");
+        let tableBody = document.getElementById("tableBody");
+
+        let headerRow = document.createElement("tr");
+        let headers = [
+          "Payment ID",
+          "Partner Name",
+          "Acquirer",
+          "Payment Method",
+          "Merchant ID",
+          "Order ID",
+          "Merchant Name",
+          "Amount",
+          "PAN",
+          "Date",
+        ];
+
+        headers.forEach((col) => {
+          let th = document.createElement("th");
+          th.textContent = col;
+          headerRow.appendChild(th);
+        });
+        tableHead.appendChild(headerRow);
+
+        duplicates.forEach((row) => {
+          let tr = document.createElement("tr");
+          row.forEach((cell) => {
+            let td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      } else {
+        document.body.innerHTML = "<h1>No Duplicate Payments Found</h1>";
+      }
+    </script>
+  </body>
+</html>
