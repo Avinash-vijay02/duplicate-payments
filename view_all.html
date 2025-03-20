@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All CSV Data</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Full CSV Data</h1>
+    <table id="fullTable">
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+      let csv = localStorage.getItem("fullCSV");
+      if (csv) {
+        let rows = csv.split("\n").map((row) => row.split(","));
+        let header = rows[0];
+        let data = rows.slice(1);
+
+        let tableHead = document.getElementById("tableHead");
+        let tableBody = document.getElementById("tableBody");
+
+        let headerRow = document.createElement("tr");
+        header.forEach((col) => {
+          let th = document.createElement("th");
+          th.textContent = col;
+          headerRow.appendChild(th);
+        });
+        tableHead.appendChild(headerRow);
+
+        data.forEach((row) => {
+          let tr = document.createElement("tr");
+          row.forEach((cell) => {
+            let td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      }
+    </script>
+  </body>
+</html>
