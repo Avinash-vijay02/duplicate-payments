@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Duplicate Payment Checker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <button id="selectAllBtn">SELECT ALL</button>
+      <button id="duplicatePaymentsBtn">DUPLICATE PAYMENTS</button>
+    </div>
+
+    <div class="container">
+      <h1>DUPLICATE TRANSACTIONS FINDER</h1>
+      <input type="file" id="fileInput" accept=".csv" />
+      <button id="processBtn">Duplicate Payment</button>
+
+      <table id="outputTable">
+        <thead>
+          <tr>
+            <th>Payment ID</th>
+            <th>Partner Name</th>
+            <th>Acquirer</th>
+            <th>Payment Method</th>
+            <th>Merchant ID</th>
+            <th>Order ID</th>
+            <th>Merchant Name</th>
+            <th>Amount</th>
+            <th>PAN</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
